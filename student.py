@@ -1,5 +1,5 @@
 from person import Person
-
+'''Making the Student class by inheriting from the Person class and implementing the role_duties method.'''
 class Student(Person):
     def __init__(self, name, age, address, ssn):
         super().__init__(name, age, address, ssn)

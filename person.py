@@ -13,7 +13,11 @@ class Person:
 
     # Set method for the ssn attribute
     def set_ssn(self, ssn):
-        self.__ssn = ssn
+        # Validation of the SSN format
+        if isinstance(ssn, str) and len(ssn) == 14:
+            self.__ssn = ssn
+        else:
+            print("Invalid SSN format! Please provide a valid SSN (e.g., XXXX-XXXX-XXXX).")
 
     # Abstract method
     def role_duties(self):
