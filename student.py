@@ -23,6 +23,28 @@ class Student(Person):
         average_grade = total_grades / num_subjects if num_subjects > 0 else 0
 
         return self.grades, average_grade
+    
+    def display_grades(self):
+        """Displays the student's grades."""
+        if not self.grades:
+            return f"{self.name} has no grades yet."
+        grades = "\n".join([f"{subject}: {grade}" for subject, grade in self.grades.items()])
+        return f"Grades for {self.name}:\n{grades}"
+    
+    def attendance(self, date, status):
+        """Marks the student's attendance as 'Present' or 'Absent' for a given date."""
+        if status not in ["Present", "Absent"]:
+            print("Invalid status! Use 'Present' or 'Absent'.")
+            return
+        self.attendance_record[date] = status
+        print(f"Attendance marked for {self.name} on {date}: {status}")
+
+    def display_attendance(self):
+        """Displays the student's overall attendance record."""
+        if not self.attendance_record:
+            return f"{self.name} has no attendance records."
+        attendance_list = "\n".join([f"{date}: {status}" for date, status in self.attendance_record.items()])
+        return f"Attendance Record for {self.name}:\n{attendance_list}"
 
 
     def role_duties(self):
