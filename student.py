@@ -5,6 +5,7 @@ class Student(Person):
         super().__init__(name, age, address, ssn)
         self.grades = {"Mathematics": 0, "Science": 0, "History": 0, "English":
                        0, "Physical Education": 0}
+        self.attendance_record = {}
 
     def assign_grades(self, grades):
         """
@@ -24,6 +25,7 @@ class Student(Person):
 
         return self.grades, average_grade
     
+    
     def display_grades(self):
         """Displays the student's grades."""
         if not self.grades:
@@ -31,13 +33,14 @@ class Student(Person):
         grades = "\n".join([f"{subject}: {grade}" for subject, grade in self.grades.items()])
         return f"Grades for {self.name}:\n{grades}"
     
+    
     def attendance(self, date, status):
         """Marks the student's attendance as 'Present' or 'Absent' for a given date."""
         if status not in ["Present", "Absent"]:
             print("Invalid status! Use 'Present' or 'Absent'.")
             return
         self.attendance_record[date] = status
-        print(f"Attendance marked for {self.name} on {date}: {status}")
+        
 
     def display_attendance(self):
         """Displays the student's overall attendance record."""
